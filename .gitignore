@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+out/
+*.pyc
+
+# Editor
+.vscode/
+.idea/
+
+# Simulation artifacts
+sim_work/
+waves.vcd

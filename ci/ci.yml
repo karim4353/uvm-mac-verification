@@ -1,0 +1,23 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: python-version: '3.10'
+      - name: Install deps
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r python/requirements.txt
+      - name: Run unit tests
+        run: pytest tests/unit -q
+      - name: Quick demo (may be skipped if Verilator not installed)
+        run: |
+          chmod +x tools/run_quick_demo.sh
+          ./tools/run_quick_demo.sh || echo "Quick demo skipped"
+      - name: Run notebook headless
+        run: jupyter nbconvert --to notebook --execute notebooks/failure_clustering.ipynb --ExecutePreprocessor.timeout=600 --output out/notebooks/failure_clustering_executed.ipynb

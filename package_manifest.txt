@@ -1,0 +1,11 @@
+README.md - overview, quickstart & vendor notes
+rtl/ - DUT RTL files (mac_top.sv, mac_rx.sv, mac_tx.sv, crc32.sv, fifo.sv)
+uvm/ - UVM testbench (env, agents, sequences, scoreboard, coverpoints, assertions)
+verilator_fallback/ - Verilator + cocotb fallback harness
+python/ - run_regression.py, parse_logs.py, ml_triage.py, dashboard.py
+notebooks/ - failure_clustering.ipynb
+docs/ - architecture, vendor notes, limitations
+tests/ - unit & integration tests
+ci/ - GitHub Actions workflow skeleton
+tools/ - run_quick_demo.sh & helpers
+out/ - generated outputs (gitignored)
